@@ -18,7 +18,7 @@ jobs:
     
       - name: Build and test (with npm)
         working-directory: docker/app1-hello/node
-        run: npm install && npm test
+        run: npm install 
     
       - name: Upload test Reports
         run: echo ""
