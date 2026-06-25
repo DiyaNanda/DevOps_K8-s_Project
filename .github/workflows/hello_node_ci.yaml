@@ -10,18 +10,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
+      
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-    
-      - name: Build and test (with npm)
+          node-version: '25'
+
+      - name: Install dependencies for Docker
         working-directory: docker/app1-hello/node
-        run: npm install 
+        run: npm ci
     
-      - name: Upload test Reports
-        run: echo ""
+      - name: Upload test Reports (if any)
+        run: npm tests --if-present
 
 
   Docker-image-push:
@@ -31,15 +31,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install dependencies for Docker
-        working-directory: docker/app1-hello/node
-        run: npm install
 
       - name: Login to DockerHub
         uses: docker/login-action@v4
