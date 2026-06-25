@@ -21,6 +21,7 @@ jobs:
         run: npm ci
     
       - name: Upload test Reports (if any)
+        working-directory: docker/app1-hello/node
         run: npm test --if-present
 
 
