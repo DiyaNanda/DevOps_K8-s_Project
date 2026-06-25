@@ -19,7 +19,7 @@ jobs:
     
       - name: Build and test (with Maven)
         working-directory: docker/app1-hello/node
-        run: mvn -B clean verify
+        run: mvn -B clean verify --file pom.xml
     
       - name: Upload test Reports
         run: echo ""
